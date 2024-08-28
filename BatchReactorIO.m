@@ -110,21 +110,18 @@ Dw   =  ones(dimM*dimL, Ndat)*ew;
 DAll =  [Dd;Dw];
 De   =  max(svd(DAll*DAll')) * eye(dimP*dimL+dimP+dimM*dimL);
 
-tm1  = dimP*dimL;
-tm2  = dimP*dimL+dimP;
-tm3  = dimP*dimL+dimP+dimM*dimL;
-De11 = De(1:tm1,     1:tm1); De12 = De(1:tm1,     tm1+1:tm2); De13 = De(1:tm1,     tm2+1:tm3); 
-De21 = De(tm1+1:tm2, 1:tm1); De22 = De(tm1+1:tm2, tm1+1:tm2); De23 = De(tm1+1:tm2, tm2+1:tm3);
-De31 = De(tm2+1:tm3, 1:tm1); De32 = De(tm2+1:tm3, tm1+1:tm2); De33 = De(tm2+1:tm3, tm2+1:tm3);
+tm1 =  dimP;
+tm2  = dimP*dimL+dimP+dimM*dimL;
+De11 = De(1:tm1,     1:tm1); De12 = De(1:tm1,     tm1+1:tm2); 
+De21 = De(tm1+1:tm2, 1:tm1); De22 = De(tm1+1:tm2, tm1+1:tm2); 
 
-
-Adz  = X0*X0'-[De11, De13; De31, De33];
-Bdz  = -Lell'*X1*X0' + [De21, De23];
-Cdz  = (Lell'*X1)*(Lell'*X1)' - De22;
+Adz  = X0*X0'-De22;
+Bdz  = -Lell'*X1*X0' + De12;
+Cdz  = (Lell'*X1)*(Lell'*X1)' - De11;
 
 eig_X0  = eig(X0*X0');
-eig_De  = eig([De11, De13; De31, De33]);
-eig_Adz = eig(Adz)
+eigDe22 = eig(De22);
+eigAdz  = eig(Adz);
 
 
 
