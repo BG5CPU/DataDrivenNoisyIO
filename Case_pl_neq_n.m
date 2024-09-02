@@ -75,8 +75,13 @@ eu = 2;      % bound of input
 ed = 0.01;   % bound of output noise
 ew = 0.01;   % bound of input noise
 
+% % bound of output noise for artificial system
+% ea = 1* svd(Ca)* svd(Ba)* ew; 
+
 % bound of output noise for artificial system
-ea = 1* svd(Ca)* svd(Ba)* ew; 
+normUd = norm(ones(dimM,1)*ew);
+normYad = norm(Ca)*norm(Ba)*normUd/(1-norm(Aa)); 
+ea = sqrt(normYad^2/dimP);
 
 
 uu = (rand(dimM, Nsample)-0.5)*2* eu;  % input
