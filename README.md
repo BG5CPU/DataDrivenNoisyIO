@@ -9,7 +9,9 @@ Please see the link
 
 ## Instructions
 *BatchReactorIO.m* is for the first case, Section 5.1
+
 *Case_pl_neq_n.m* is for the second case, Section 5.2
+
 *Comparison_SDP.m* and *Comparison_SOS* is for the third case, Section 5.3
 
 
