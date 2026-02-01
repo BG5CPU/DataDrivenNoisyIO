@@ -5,6 +5,7 @@ This is the simulation code for the paper
 
 Please see the link 
 >https://arxiv.org/abs/2402.02588
+>https://www.sciencedirect.com/science/article/pii/S0005109825004406
 
 
 ## Instructions
